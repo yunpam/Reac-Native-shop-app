@@ -19,7 +19,7 @@ const ProductItem = (props) => {
                 <Image source={{ uri: props.image }} style={styles.image} />
                 <View style={styles.details}>
                     <Text style={styles.title}>{props.title}</Text>
-                    <Text style={styles.price}>{props.price.toFixed(2)}</Text>
+                    <Text style={styles.price}>${props.price.toFixed(2)}</Text>
                 </View>
                 <View style={styles.buttonContainer}>
                     <Button
@@ -58,7 +58,8 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 18,
-        marginTop: 4
+        marginTop: 2,
+        fontFamily:'open-sans-bold'
     },
     buttonContainer: {
         marginVertical: 5,
@@ -71,7 +72,8 @@ const styles = StyleSheet.create({
     },
     price: {
         fontSize: 14,
-        color: '#888'
+        color: '#888',
+        fontFamily:'open-sans'
     },
     details: {
         alignItems: 'center',

@@ -37,12 +37,14 @@ const styles = StyleSheet.create({
         fontSize: 20,
         color: '#888',
         marginVertical: 20,
-        textAlign: 'center'
+        textAlign: 'center',
+        fontFamily:'open-sans-bold'
     },
     description: {
         fontSize: 14,
         textAlign: 'center',
-        marginHorizontal:10
+        marginHorizontal:10,
+        fontFamily:'open-sans'
     },
     actions: {
         marginVertical: 10,
