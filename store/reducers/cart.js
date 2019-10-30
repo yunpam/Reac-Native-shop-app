@@ -6,7 +6,7 @@ const initialState = {
     totalAmount: 0
 }
 
-export default  (state = initialState, action) => {
+export default cartReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_TO_CART:
             const addedProduct = action.product
@@ -15,7 +15,7 @@ export default  (state = initialState, action) => {
 
             let updatedOrNewCartItem;
 
-            if (items[addedProduct.id]) {
+            if (state.items[addedProduct.id]) {
                 // Already have the item in The cart
                 updatedOrNewCartItem = new CartItem(
                     state.items[addedProduct.id].quantity + 1,
