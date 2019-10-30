@@ -1,21 +1,40 @@
 import React from 'react'
-import { View, StyleSheet, Text, Image, Button } from 'react-native'
+import {
+    View, StyleSheet,
+    Text, Image, Button, TouchableOpacity,
+    TouchableNativeFeedback,Platform
+}
+    from 'react-native'
 
 import Colors from '../../constants/Colors'
 
 const ProductItem = (props) => {
+    let TouchableCmp = TouchableOpacity;
+    if(Platform.OS && Platform.Version >= 21) {
+        TouchableCmp = TouchableNativeFeedback
+    }
     return (
-        <View style={styles.product}>
-            <Image source={{ uri: props.image }} style={styles.image} />
-            <View style={styles.details}>
-                <Text style={styles.title}>{props.title}</Text>
-                <Text style={styles.price}>{props.price.toFixed(2)}</Text>
+        <TouchableCmp onPress={props.onViewDetail} useForeground >
+            <View style={styles.product}>
+                <Image source={{ uri: props.image }} style={styles.image} />
+                <View style={styles.details}>
+                    <Text style={styles.title}>{props.title}</Text>
+                    <Text style={styles.price}>{props.price.toFixed(2)}</Text>
+                </View>
+                <View style={styles.buttonContainer}>
+                    <Button
+                        color={Colors.primary}
+                        title='View Details'
+                        onPress={props.onViewDetail}
+                    />
+                    <Button
+                        color={Colors.primary}
+                        title='to Cart'
+                        onPress={props.onAddToCart}
+                    />
+                </View>
             </View>
-            <View style={styles.buttonContainer}>
-                <Button color={Colors.primary} title='View Details' onPress={props.onViewDetail} />
-                <Button color={Colors.primary} title='to Cart' onPress={props.onAddToCart} />
-            </View>
-        </View>
+        </TouchableCmp>
     )
 }
 
@@ -47,7 +66,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         padding: 15,
-        height:'25%'
+        height: '25%'
 
     },
     price: {
